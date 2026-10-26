@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111318">
+<title>Redeem Hub — Roblox Code Manager</title>
+<style>
+:root{color-scheme:dark;--bg:#0d0f13;--panel:#15181f;--panel2:#1c2029;--line:#2b303b;--text:#f4f6fa;--muted:#9ca5b5;--accent:#dce2ec;--good:#65d6a2;--warn:#f4c96b;--bad:#ff8989}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b202a 0,#0d0f13 55%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:11px 14px;font-weight:650}button:active{transform:scale(.99)}button.primary{background:#edf1f7;color:#111318;border-color:#edf1f7}button.subtle{background:transparent}button.danger{color:#ffaaaa}button:disabled{opacity:.45;cursor:not-allowed}
+.wrap{max-width:980px;margin:auto;padding:20px 16px 44px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:13px;background:#e9edf4;color:#111318;display:grid;place-items:center;font-size:21px;font-weight:900}.eyebrow{font-size:11px;color:var(--muted);letter-spacing:.15em;font-weight:800}.brand h1{font-size:19px;margin:1px 0 0}.pill{border:1px solid var(--line);padding:7px 10px;border-radius:99px;color:var(--muted);font-size:12px;white-space:nowrap}
+.hero{padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#1c212b,#13161c);margin-bottom:16px}.hero h2{font-size:clamp(24px,5vw,36px);line-height:1.1;margin:0 0 10px;letter-spacing:-.04em}.hero p{margin:0;color:var(--muted);max-width:650px}.heroactions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.stat{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:14px}.stat b{display:block;font-size:24px;letter-spacing:-.03em}.stat span{color:var(--muted);font-size:12px}
+.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:17px;min-width:0}.card h3{font-size:16px;margin:0 0 5px}.desc{color:var(--muted);font-size:13px;margin:0 0 14px}.fieldlabel{display:block;color:#c5cbd5;font-size:12px;font-weight:750;margin:12px 0 7px}textarea,input,select{width:100%;background:#0e1116;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;outline:none}textarea:focus,input:focus,select:focus{border-color:#929dad}textarea{min-height:145px;resize:vertical} .row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}.small{font-size:12px;color:var(--muted)}.message{min-height:18px;margin-top:9px;color:var(--good);font-size:12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}.toolbar button{font-size:12px;padding:9px 11px}.list{display:flex;flex-direction:column;gap:8px}.codeitem{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:11px;background:#11141a}.codetext{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;font-size:13px}.meta{display:flex;gap:7px;align-items:center;margin-top:6px;flex-wrap:wrap}.status{font-size:11px;border-radius:99px;padding:4px 7px;background:#252a34;color:#d1d6df}.status.pending{color:#d1d6df}.status.success{background:#18382c;color:#8be5b8}.status.failed{background:#3a2024;color:#ffaaaa}.status.manual{background:#3b321d;color:#f4d78e}.itembuttons{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.itembuttons button{padding:7px 9px;font-size:11px}.empty{border:1px dashed var(--line);border-radius:14px;padding:24px;text-align:center;color:var(--muted);font-size:13px}
+.footer{color:var(--muted);font-size:12px;margin-top:16px;text-align:center}.notice{border:1px solid #4a3e23;background:#211d13;color:#e9d7a8;border-radius:14px;padding:12px 14px;font-size:12px;margin-top:14px}.hidden{display:none!important}
+@media(max-width:720px){.wrap{padding:13px 12px 30px}.top{align-items:flex-start}.pill{display:none}.hero{padding:19px}.layout{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat b{font-size:21px}.card{padding:14px}.itembuttons{max-width:105px}.itembuttons button{padding:7px}.heroactions button{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">R</div><div><div class="eyebrow">ROBLOX UTILITIES</div><h1>Redeem Hub</h1></div></div>
+    <div class="pill">PC · Android · iPhone</div>
+  </header>
+  <section class="hero">
+    <h2>Manage your codes.<br>One simple place.</h2>
+    <p>Kelola daftar kode Roblox dari browser apa pun. Tempel banyak kode, salin kode berikutnya, lalu catat hasilnya.</p>
+    <div class="heroactions">
+      <button class="primary" id="openRoblox">Buka Roblox Redeem ↗</button>
+      <button id="copyNextTop">Salin kode berikutnya</button>
+    </div>
+  </section>
+  <section class="stats">
+    <div class="stat"><b id="total">0</b><span>Total kode</span></div>
+    <div class="stat"><b id="pending">0</b><span>Belum diproses</span></div>
+    <div class="stat"><b id="done">0</b><span>Ditandai selesai</span></div>
+  </section>
+  <div class="layout">
+    <section class="card">
+      <h3>Tambah kode</h3><p class="desc">Tempel kode, satu per baris atau dipisahkan koma/spasi. Duplikat akan dilewati.</p>
+      <label class="fieldlabel" for="codes">Daftar kode</label>
+      <textarea id="codes" placeholder="CONTOH-KODE-1&#10;CONTOH-KODE-2&#10;CONTOH-KODE-3"></textarea>
+      <div class="row" style="margin-top:10px"><button class="primary" id="addCodes">Tambah kode</button><button id="pasteHint">Kosongkan kolom</button></div>
+      <div class="message" id="addMessage" aria-live="polite"></div>
+      <div class="notice">Privasi: daftar disimpan di penyimpanan browser pada perangkat ini. Data tidak otomatis tersinkron ke perangkat lain.</div>
+      <label class="fieldlabel" for="filter">Cari / filter</label>
+      <input id="filter" placeholder="Cari kode..." autocomplete="off">
+      <label class="fieldlabel" for="statusFilter">Status</label>
+      <select id="statusFilter"><option value="all">Semua status</option><option value="pending">Belum diproses</option><option value="success">Sukses (ditandai)</option><option value="failed">Gagal (ditandai)</option><option value="manual">Perlu dicek</option></select>
+      <div class="toolbar">
+        <button id="exportCsv">Ekspor CSV</button><button id="copyPending">Salin semua yang pending</button><button id="clearAll" class="danger">Hapus semua</button>
+      </div>
+    </section>
+    <section class="card">
+      <h3>Daftar kode</h3><p class="desc">Gunakan tombol di tiap kode untuk menyalin dan memperbarui statusnya.</p>
+      <div class="list" id="list"><div class="empty">Belum ada kode. Tambahkan daftar di sebelah kiri.</div></div>
+      <div class="toolbar"><button id="resetStatus">Reset status</button><button id="backup">Unduh backup JSON</button><button id="restore">Impor backup JSON</button><input id="backupFile" class="hidden" type="file" accept=".json,application/json"></div>
+    </section>
+  </div>
+  <div class="footer">Redeem Hub bukan produk resmi Roblox. Hasil redeem tidak diverifikasi otomatis oleh aplikasi ini.</div>
+</div>
+<script>
+(() => {
+ const KEY='redeemHubCodes_v1';
+ const $=id=>document.getElementById(id);
+ let items=[];
+ try { const raw=localStorage.getItem(KEY); if(raw){const parsed=JSON.parse(raw); if(Array.isArray(parsed))items=parsed;} } catch(e){}
+ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(items));}catch(e){alert('Penyimpanan browser penuh atau dinonaktifkan. Ekspor backup agar data aman.')} render();};
+ const norm=s=>s.trim().replace(/\s+/g,'');
+ const uniqueCodes=text=>text.split(/[\n\r,\t ;]+/).map(norm).filter(Boolean);
+ const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const counts=()=>({total:items.length,pending:items.filter(x=>x.status==='pending').length,done:items.filter(x=>x.status==='success').length});
+ function render(){
+  const c=counts();$('total').textContent=c.total;$('pending').textContent=c.pending;$('done').textContent=c.done;
+  const q=$('filter').value.trim().toLowerCase(),sf=$('statusFilter').value;
+  const shown=items.filter(x=>(!q||x.code.toLowerCase().includes(q))&&(sf==='all'||x.status===sf));
+  $('list').innerHTML=shown.length?shown.map(x=>`<div class="codeitem"><div><div class="codetext">${escapeHtml(x.code)}</div><div class="meta"><span class="status ${escapeHtml(x.status)}">${({pending:'Pending',success:'Sukses · ditandai',failed:'Gagal · ditandai',manual:'Perlu dicek'})[x.status]||'Pending'}</span></div></div><div class="itembuttons"><button data-action="copy" data-id="${x.id}">Salin</button><button data-action="success" data-id="${x.id}">✓</button><button data-action="failed" data-id="${x.id}">✕</button><button data-action="manual" data-id="${x.id}">?</button></div></div>`).join(''):'<div class="empty">Tidak ada kode yang cocok.</div>';
+ }
+ async function copy(text){try{await navigator.clipboard.writeText(text);return true;}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();return ok;}}
+ $('addCodes').onclick=()=>{const incoming=uniqueCodes($('codes').value);const existing=new Set(items.map(x=>x.code.toLowerCase()));let added=0,dupes=0;for(const code of incoming){if(existing.has(code.toLowerCase())){dupes++;continue;}items.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),code,status:'pending',createdAt:new Date().toISOString()});existing.add(code.toLowerCase());added++;}save();$('addMessage').textContent=`Ditambahkan ${added} kode · ${dupes} duplikat dilewati.`;$('codes').value='';};
+ $('pasteHint').onclick=()=>{$('codes').value='';$('codes').focus();};
+ $('openRoblox').onclick=()=>window.open('https://www.roblox.com/redeem','_blank','noopener,noreferrer');
+ $('copyNextTop').onclick=async()=>{const x=items.find(i=>i.status==='pending');if(!x){alert('Tidak ada kode pending.');return;}await copy(x.code);alert('Kode disalin: '+x.code);};
+ $('copyPending').onclick=async()=>{const text=items.filter(i=>i.status==='pending').map(i=>i.code).join('\n');if(!text){alert('Tidak ada kode pending.');return;}await copy(text);alert('Daftar kode pending disalin.');};
+ $('filter').oninput=render;$('statusFilter').onchange=render;
+ $('list').onclick=async e=>{const b=e.target.closest('button[data-action]');if(!b)return;const x=items.find(i=>i.id===b.dataset.id);if(!x)return;const a=b.dataset.action;if(a==='copy'){await copy(x.code);b.textContent='Tersalin';setTimeout(()=>{if(b.isConnected)b.textContent='Salin';},900);}else if(['success','failed','manual'].includes(a)){x.status=a;save();}};
+ $('clearAll').onclick=()=>{if(confirm('Hapus semua kode dari penyimpanan browser ini? Ekspor backup dulu jika diperlukan.')){items=[];save();}};
+ $('resetStatus').onclick=()=>{items.forEach(x=>x.status='pending');save();};
+ $('exportCsv').onclick=()=>{const csv=['code,status,createdAt',...items.map(x=>[x.code,x.status,x.createdAt].map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(','))].join('\r\n');download('redeem-hub-codes.csv',csv,'text/csv;charset=utf-8');};
+ $('backup').onclick=()=>download('redeem-hub-backup.json',JSON.stringify(items,null,2),'application/json');
+ $('restore').onclick=()=>$('backupFile').click();
+ $('backupFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data))throw Error();const known=new Set(items.map(x=>String(x.code).toLowerCase()));let n=0;for(const v of data){if(!v||typeof v.code!=='string'||!v.code.trim()||known.has(v.code.toLowerCase()))continue;items.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),code:norm(v.code),status:['pending','success','failed','manual'].includes(v.status)?v.status:'pending',createdAt:v.createdAt||new Date().toISOString()});known.add(v.code.toLowerCase());n++;}save();alert('Backup diimpor. Kode baru ditambahkan: '+n);}catch(err){alert('File backup tidak valid.');}e.target.value='';};
+ function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);}
+ render();
+})();
+</script>
+</body>
+</html>
