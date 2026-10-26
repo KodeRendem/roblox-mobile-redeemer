@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auto Redeem • Dashboard</title>
+<style>
+:root{color-scheme:dark;--bg:#090a0d;--panel:#12151b;--line:#303640;--silver:#d8dde6;--muted:#8f98a7;--accent:#c4ccd8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b2029 0,#090a0d 55%);color:var(--silver);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{width:min(100% - 28px,1050px);margin:32px auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.14em}.tag{border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted);font-size:12px}
+h1{font-size:clamp(27px,5vw,42px);line-height:1.1;margin:28px 0 8px}p{color:var(--muted)}.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:22px}
+.card{background:linear-gradient(145deg,#171b22,#101217);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 35px #0005}h2{font-size:16px;margin:0 0 12px}textarea{width:100%;min-height:200px;resize:vertical;background:#090b0f;border:1px solid #39404b;border-radius:12px;padding:14px;color:#f4f6fa;font:14px/1.6 ui-monospace,SFMono-Regular,monospace;outline:none}textarea:focus{border-color:#aab4c3}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button,.filebtn{border:1px solid #4a5361;border-radius:10px;background:#242a34;color:#f3f5f8;padding:10px 15px;font-weight:700;cursor:pointer}button.primary{background:#d9dee7;color:#101216;border-color:#d9dee7}button.danger{border-color:#70434a;color:#ffbdc4;background:#29191d}button:disabled{opacity:.4;cursor:not-allowed}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#0b0d11;border:1px solid #272d36;border-radius:12px;padding:12px}.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}.progress{height:7px;background:#292e37;border-radius:99px;overflow:hidden;margin:14px 0}.progress i{display:block;height:100%;width:0;background:#cfd6e1;transition:width .2s}.list{max-height:330px;overflow:auto;margin-top:12px}.item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #252a32;overflow-wrap:anywhere}.status{font-size:11px;color:#d8dde6;border:1px solid #414956;border-radius:6px;padding:2px 6px;white-space:nowrap}.hint{font-size:12px}.notice{border-left:3px solid #9ca8ba;padding:8px 12px;background:#11151b;border-radius:0 8px 8px 0;font-size:13px;color:#b9c2d0}
+@media(max-width:720px){main{margin:18px auto}.layout{grid-template-columns:1fr}.card{padding:16px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat{padding:9px}.stat b{font-size:20px}}
+</style></head>
+<body><main>
+<div class="top"><div class="brand">AR / FULL</div><span class="tag">LOCAL DASHBOARD · NO CREDENTIALS</span></div>
+<h1>Auto Redeem<br><span style="color:#8993a3">Control Center</span></h1>
+<p>Antrean kode promo dengan status lokal. Dashboard ini tidak melakukan redeem sendiri; gunakan ekstensi PC pada halaman resmi Roblox.</p>
+<div class="layout">
+<section class="card"><h2>Daftar kode</h2>
+<textarea id="codes" placeholder="Masukkan satu kode per baris&#10;KODE-ANDA-1&#10;KODE-ANDA-2"></textarea>
+<div class="actions"><button id="load">Muat antrean</button><button id="export">Ekspor status JSON</button><label class="filebtn" for="importFile">Impor JSON</label><input id="importFile" type="file" accept=".json,application/json" hidden></div>
+<p class="hint">Kode diproses lokal di browser ini. Jangan masukkan password atau cookie.</p></section>
+<section class="card"><h2>Status antrean</h2>
+<div class="stats"><div class="stat"><b id="total">0</b><span>Total</span></div><div class="stat"><b id="done">0</b><span>Selesai / dicoba</span></div><div class="stat"><b id="left">0</b><span>Belum dicoba</span></div></div>
+<div class="progress"><i id="bar"></i></div><div id="state" class="notice">Siap. Dashboard ini untuk pengelolaan antrean dan pencatatan.</div>
+<div class="actions"><button class="primary" id="start">START</button><button id="pause">PAUSE</button><button class="danger" id="stop">STOP</button></div>
+<div class="actions"><button id="reset">Reset status</button></div>
+<div class="list" id="list"></div></section></div>
+<p class="hint">Batasan: browser web biasa tidak dapat mengendalikan tab Roblox lintas-origin. Untuk PC, gunakan ekstensi di folder <code>extension</code>. Android/iPhone memiliki batas dukungan berbeda; lihat README.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id); let rows=[], running=false, paused=false, stopped=false;
+function render(){let done=rows.filter(x=>x.status!=="PENDING").length;$("total").textContent=rows.length;$("done").textContent=done;$("left").textContent=rows.length-done;$("bar").style.width=(rows.length?done/rows.length*100:0)+"%";$("list").innerHTML="";rows.forEach((r,i)=>{let d=document.createElement("div");d.className="item";let a=document.createElement("span");a.textContent=(i+1)+". "+r.code;let b=document.createElement("span");b.className="status";b.textContent=r.status;d.append(a,b);$("list").append(d)});localStorage.setItem("ar_rows",JSON.stringify(rows))}
+function setState(t){$("state").textContent=t}
+$("load").onclick=()=>{rows=$("codes").value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean).filter((s,i,a)=>a.indexOf(s)===i).map(code=>({code,status:"PENDING",updatedAt:null}));render();setState("Antrean dimuat. Buka ekstensi untuk menjalankan redeem pada situs resmi.")};
+$("start").onclick=()=>{running=true;paused=false;stopped=false;setState("Dashboard siap. Jalankan antrean melalui popup ekstensi di halaman Roblox.")};
+$("pause").onclick=()=>{paused=true;running=false;setState("Dashboard dijeda. Tidak ada redeem yang berjalan dari halaman ini.")};
+$("stop").onclick=()=>{stopped=true;running=false;paused=false;setState("Dihentikan. Status yang sudah dicatat tetap tersimpan.")};
+$("reset").onclick=()=>{rows=rows.map(x=>({...x,status:"PENDING",updatedAt:null}));render();setState("Status direset.")};
+$("export").onclick=()=>{let blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),codes:rows},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="redeem-status.json";a.click();URL.revokeObjectURL(a.href)};
+$("importFile").onchange=async e=>{try{let j=JSON.parse(await e.target.files[0].text());rows=(j.codes||j).map(x=>typeof x==="string"?{code:x,status:"PENDING"}:{code:x.code,status:x.status||"PENDING",updatedAt:x.updatedAt||null});$("codes").value=rows.map(x=>x.code).join("\n");render();setState("JSON berhasil diimpor.")}catch{setState("File JSON tidak valid.")}};
+try{rows=JSON.parse(localStorage.getItem("ar_rows")||"[]");$("codes").value=rows.map(x=>x.code).join("\n");render()}catch{}
+</script></body></html>
